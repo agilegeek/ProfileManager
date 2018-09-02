@@ -14,5 +14,6 @@ namespace ProfileManager.Models
         public DbSet<Persoon> Persoon { get; set; }
         public DbSet<ScrumTeam> ScrumTeam { get; set; }
         public DbSet<Team> Team { get; set; }
+        public DbSet<Competentie> Competentie { get; set; }
     }
 }
