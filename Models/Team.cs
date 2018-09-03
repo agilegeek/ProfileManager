@@ -5,10 +5,10 @@ namespace ProfileManager.Models
 {
     public class Team
     {
-        public int ID { get; set; }
+        public int TeamId { get; set; }
         public string Naam { get; set; }
         public Persoon Manager { get; set; }
-        public List<Persoon> Leden { get; set; }
+        public ICollection<PersoonTeam> PersoonTeams { get; set; }
 
     }
 }
