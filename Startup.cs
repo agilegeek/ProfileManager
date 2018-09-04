@@ -55,6 +55,8 @@ namespace ProfileManager
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseMvcWithDefaultRoute(); //?
+
             app.UseMvc();
         }
     }
