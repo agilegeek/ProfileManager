@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProfileManager.Models;
 using Microsoft.EntityFrameworkCore;
+using ProfileManager.Repositories;
 
 namespace ProfileManager
 {
@@ -34,6 +35,8 @@ namespace ProfileManager
             });
             services.AddDbContext<ProfileManagerContext>(options =>
             options.UseSqlite(Configuration.GetConnectionString("ProfileManagerContext")));
+
+            services.AddTransient<IApplicatieRepository, MockApplicatieRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

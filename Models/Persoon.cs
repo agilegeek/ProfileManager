@@ -10,6 +10,8 @@ namespace ProfileManager.Models
         public string Achternaam { get; set; }
         public string Tussenvoegsel { get; set; }
         public DateTime Geboortedatum { get; set; }
+        public string TelefoonNummer { get; set; }
+        public Locatie Locatie { get; set; }
         public string Functie { get; set; }
         public ICollection<PersoonTeam> PersoonTeams { get; set; }
         public ICollection<PersoonScrumTeam> PersoonScrumTeams { get; set; }

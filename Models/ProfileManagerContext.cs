@@ -15,6 +15,7 @@ namespace ProfileManager.Models
         public DbSet<ScrumTeam> ScrumTeam { get; set; }
         public DbSet<Team> Team { get; set; }
         public DbSet<Competentie> Competentie { get; set; }
+        public DbSet<Locatie> Locatie { get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
