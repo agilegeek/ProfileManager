@@ -1,0 +1,9 @@
+@model ProfileManager.ViewModels.HomeViewModel
+
+    @foreach(var applicatie in Model.Applicaties)
+    {
+        <div>
+            <h2>@applicatie.Naam</h2>
+            <h3>@applicatie.Versie</h3>
+        </div>
+    }

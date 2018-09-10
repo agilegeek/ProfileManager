@@ -5,7 +5,7 @@ namespace ProfileManager.Repositories
 {
     public interface IApplicatieRepository
     {
-        IEnumerable<Applicatie> GetAllApplicaties();
+        IList<Applicatie> GetAllApplicaties();
         Applicatie GetApplicatieById(int applicatieId);
     }
 }

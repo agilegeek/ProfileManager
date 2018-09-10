@@ -25,7 +25,7 @@ namespace ProfileManager.Repositories
             _applicaties.Add(new Applicatie { ApplicatieId = 5, Naam = "WACSSA", Versie = "1.0.0.1" } );
         }
 
-        public IEnumerable<Applicatie> GetAllApplicaties()
+        public IList<Applicatie> GetAllApplicaties()
         {
             return _applicaties;
         }

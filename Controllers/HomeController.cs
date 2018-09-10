@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using ProfileManager.Repositories;
+using ProfileManager.ViewModels;
 
 namespace ProfileManager.Controllers
 {
@@ -15,9 +17,13 @@ namespace ProfileManager.Controllers
 
         public IActionResult Index()
         {
-            var applicaties = _applicatieRepository.GetAllApplicaties().OrderBy(a => a.Naam);
+            var homeViewModel = new HomeViewModel
+            {
+                Title = "Lijst van Applicaties",
+                Applicaties = _applicatieRepository.GetAllApplicaties().OrderBy(a => a.Naam).ToList()
+            };
 
-            return View();
+            return View(homeViewModel);
         }
     }
 }
