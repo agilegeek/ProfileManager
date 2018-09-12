@@ -7,6 +7,7 @@ namespace ProfileManager.Models
     {
         public int TeamId { get; set; }
         public string Naam { get; set; }
+        public string Beschrijving { get; set; }
         public Persoon Manager { get; set; }
         public ICollection<PersoonTeam> PersoonTeams { get; set; }
 

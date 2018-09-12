@@ -28,9 +28,9 @@ namespace ProfileManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ProfileManagerContext>(options =>
-            options.UseSqlite(Configuration.GetConnectionString("ProfileManagerContext")));
+            options.UseSqlServer(Configuration.GetConnectionString("ProfileManagerContext")));
 
-            services.AddTransient<IApplicatieRepository, MockApplicatieRepository>();
+            services.AddTransient<IApplicatieRepository, ApplicatieRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

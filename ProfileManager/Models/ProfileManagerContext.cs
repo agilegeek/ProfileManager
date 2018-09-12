@@ -9,13 +9,14 @@ namespace ProfileManager.Models
         {
         }
 
-        public DbSet<Applicatie> Applicatie { get; set; }
-        public DbSet<Gilde> Gilde { get; set; }
-        public DbSet<Persoon> Persoon { get; set; }
-        public DbSet<ScrumTeam> ScrumTeam { get; set; }
-        public DbSet<Team> Team { get; set; }
-        public DbSet<Competentie> Competentie { get; set; }
-        public DbSet<Locatie> Locatie { get; set;}
+        public DbSet<Applicatie> Applicaties { get; set; }
+        public DbSet<Gilde> Gildes { get; set; }
+        public DbSet<Persoon> Personen { get; set; }
+        public DbSet<ScrumTeam> ScrumTeams { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Competentie> Competenties { get; set; }
+        public DbSet<Locatie> Locaties { get; set;}
+        public DbSet<Rol> Rollen { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,7 +48,7 @@ namespace ProfileManager.Models
             .WithMany(s => s.PersoonScrumTeams)
             .HasForeignKey(ps => ps.ScrumTeamId);
 
-             // Persoon - Team
+            // Persoon - Team
             modelBuilder.Entity<PersoonTeam>()
             .HasKey(pt => new { pt.PersoonId, pt.TeamId });
 
@@ -60,6 +61,20 @@ namespace ProfileManager.Models
             .HasOne(pt => pt.Team)
             .WithMany(t => t.PersoonTeams)
             .HasForeignKey(pt => pt.TeamId);
+
+            // Persoon - Rol
+            modelBuilder.Entity<PersoonRol>()
+            .HasKey(pr => new { pr.PersoonId, pr.RolId });
+
+            modelBuilder.Entity<PersoonRol>()
+            .HasOne(pr => pr.Persoon)
+            .WithMany(t => t.PersoonRollen)
+            .HasForeignKey(pr => pr.PersoonId);
+
+            modelBuilder.Entity<PersoonRol>()
+            .HasOne(pr => pr.Rol)
+            .WithMany(r => r.PersoonRollen)
+            .HasForeignKey(pr => pr.RolId);
         }
     }
 }

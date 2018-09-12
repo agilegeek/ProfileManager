@@ -26,7 +26,7 @@ namespace ProfileManager.Repositories
             _applicaties.Add(new Applicatie { ApplicatieId = 6, Naam = "Nota APP", Versie = "1.0.0.1", Technologie = "Outsystems" } );
         }
 
-        public IList<Applicatie> GetAllApplicaties()
+        public IEnumerable<Applicatie> GetAllApplicaties()
         {
             return _applicaties;
         }

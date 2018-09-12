@@ -13,6 +13,7 @@ namespace ProfileManager.Models
         public string TelefoonNummer { get; set; }
         public Locatie Locatie { get; set; }
         public string Functie { get; set; }
+        public ICollection<PersoonRol> PersoonRollen { get; set; }
         public ICollection<PersoonTeam> PersoonTeams { get; set; }
         public ICollection<PersoonScrumTeam> PersoonScrumTeams { get; set; }
         public ICollection<PersoonGilde> PersoonGildes { get; set; }
