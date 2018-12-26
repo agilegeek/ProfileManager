@@ -15,6 +15,11 @@ namespace ProfileManager.Repositories
             _profileManagerContext = profileManagerContext;
         }
 
+        public bool AddApplicatie(Applicatie applicatie)
+        {
+           return ( _profileManagerContext.Applicaties.Add(applicatie) != null);
+        }
+
         public IEnumerable<Applicatie> GetAllApplicaties()
         {
             return _profileManagerContext.Applicaties;

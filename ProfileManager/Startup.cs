@@ -31,6 +31,7 @@ namespace ProfileManager
             options.UseSqlServer(Configuration.GetConnectionString("ProfileManagerContext")));
 
             services.AddTransient<IApplicatieRepository, ApplicatieRepository>();
+            services.AddTransient<IRolRepository, RolRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

@@ -35,5 +35,13 @@ namespace ProfileManager.Repositories
         {
                 return _applicaties.FirstOrDefault(a => a.ApplicatieId == applicatieId);
         }
+
+        public bool AddApplicatie(Applicatie applicatie)
+        {
+            var count = _applicaties.Count;
+            _applicaties.Add(applicatie);
+
+            return (_applicaties.Count > count);
+        }
     }
 }

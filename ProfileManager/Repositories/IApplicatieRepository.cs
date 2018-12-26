@@ -7,5 +7,6 @@ namespace ProfileManager.Repositories
     {
         IEnumerable<Applicatie> GetAllApplicaties();
         Applicatie GetApplicatieById(int applicatieId);
+        bool AddApplicatie(Applicatie applicatie);
     }
 }
