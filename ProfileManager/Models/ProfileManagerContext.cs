@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace ProfileManager.Models
 {
-    public class ProfileManagerContext : DbContext
+    public class ProfileManagerContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>
     {
         public ProfileManagerContext(DbContextOptions<ProfileManagerContext> options)
                 : base(options)
@@ -20,6 +22,7 @@ namespace ProfileManager.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             // Persoon - Gilde
             modelBuilder.Entity<PersoonGilde>()
             .HasKey(pg => new { pg.PersoonId, pg.GildeId });
@@ -75,6 +78,8 @@ namespace ProfileManager.Models
             .HasOne(pr => pr.Rol)
             .WithMany(r => r.PersoonRollen)
             .HasForeignKey(pr => pr.RolId);
+
+            modelBuilder.Entity<ApplicationUser>().Property(p => p.Id).ValueGeneratedOnAdd();
         }
     }
 }

@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using ProfileManager.Models;
 using Microsoft.EntityFrameworkCore;
 using ProfileManager.Repositories;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ProfileManager
 {
@@ -33,6 +35,12 @@ namespace ProfileManager
             services.AddTransient<IApplicatieRepository, ApplicatieRepository>();
             services.AddTransient<IRolRepository, RolRepository>();
 
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<ProfileManagerContext>()
+                .AddDefaultTokenProviders()
+                .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ProfileManagerContext, Guid>>()
+                .AddRoleStore<RoleStore<ApplicationRole, ProfileManagerContext, Guid>>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -52,6 +60,7 @@ namespace ProfileManager
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
