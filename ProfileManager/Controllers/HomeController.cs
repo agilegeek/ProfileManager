@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProfileManager.Repositories;
 using ProfileManager.ViewModels;
 
 namespace ProfileManager.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IApplicatieRepository _applicatieRepository;

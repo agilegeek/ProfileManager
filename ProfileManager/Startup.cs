@@ -41,6 +41,13 @@ namespace ProfileManager
                 .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ProfileManagerContext, Guid>>()
                 .AddRoleStore<RoleStore<ApplicationRole, ProfileManagerContext, Guid>>();
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/accessdenied";
+                options.LoginPath = "/login";
+                options.LogoutPath = "/logout";
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
